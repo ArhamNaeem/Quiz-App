@@ -1,5 +1,7 @@
-// import "tailwindcss/dist/tailwind.css";
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Main from "./pages/Main";
+import Game from "./pages/Game";
 import {
   QueryClientProvider,
   QueryClient,
@@ -12,9 +14,14 @@ function App() {
   const client = new QueryClient();
   return (
     <>
-      {/* {FetchData} */}
       <QueryClientProvider client={client}>
-        <FetchData />
+        <Router>
+          <Routes>
+            {/* <FetchData /> */}
+            <Route path="/" element={<Main/>}/>
+            <Route path="/game" element={ <Game/>} />
+          </Routes>
+        </Router>
       </QueryClientProvider>
     </>
   );
