@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function Main() {
   return (
     <>
@@ -10,21 +10,25 @@ export default function Main() {
         >
           Quiz Game
         </div>
-        <div className="text-8xl text-center font-semibold text-white drop-shadow-3xl">
+        <div className="text-9xl text-center w-screen font-semibold text-white drop-shadow-3xl">
           Play now!
         </div>
-        <div className="text-white font-semibold mt-16 text-3xl text-center p-3 w-screen h-50">
-          <ul>
-            <li className="p-4 drop-shadow-3xl shadow-3xl w-52 m-auto mb-5 cursor-pointer">
+        <div className="text-white font-semibold mt-14 text-3xl text-center p-3 w-screen h-50">
+          <Link to="/topic" state={{ stateParam: "easy" }}>
+            <div className="p-4 text-center drop-shadow-4xl shadow-3xl w-60 m-auto mb-5 rounded-lg cursor-pointer">
               Easy
-            </li>
-            <li className="p-4 drop-shadow-3xl shadow-3xl w-52 m-auto mb-5 cursor-pointer">
+            </div>
+          </Link>
+          <Link to="/topic" state={{ stateParam: "medium" }}>
+            <div className="p-4 text-center drop-shadow-4xl shadow-3xl w-60 m-auto mb-5 rounded-lg  cursor-pointer">
               Medium
-            </li>
-            <li className="p-4 drop-shadow-3xl border shadow-3xl w-52 m-auto cursor-pointer">
+            </div>
+          </Link>
+          <Link to="/topic" state={{ stateParam: "hard" }}>
+            <div className="p-4 rounded-lg text-center drop-shadow-4xl shadow-3xl w-60 m-auto cursor-pointer">
               Hard
-            </li>
-          </ul>
+            </div>
+          </Link>
         </div>
       </div>
     </>
