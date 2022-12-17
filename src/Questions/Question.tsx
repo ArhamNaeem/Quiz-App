@@ -13,14 +13,8 @@ export default function Questions() {
 
   return (
     <>
-      <Navbar />
-        {difficulty === "easy" ? (
-          <Easy />
-        ) : difficulty === "medium" ? (
-          <Medium />
-        ) : (
-          <Hard />
-        )}
+    
+      <Easy />
     </>
   );
 }
