@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Main from "./pages/Main";
 import Game from "./pages/Game";
+import Questions
+  from "./Questions/Question";
 import Topic from "./pages/Topic";
 import {
   QueryClientProvider,
@@ -20,7 +22,9 @@ function App() {
           <Routes>
             {/* <FetchData /> */}
             <Route path="/" element={<Main />} />
-            <Route path="/topic" element={<Topic/>} />
+            <Route path="/topic" element={<Topic />} />
+            <Route path="/quest"
+              element={<Questions />} />
           </Routes>
         </Router>
       </QueryClientProvider>

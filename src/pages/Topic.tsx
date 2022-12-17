@@ -100,11 +100,12 @@ export default function Topic() {
             <Link
               to={
                 difficulty === "easy"
-                  ? "/quest-easy"
+                  ? "/quest"
                   : difficulty === "medium"
-                  ? "/quest-medium"
-                  : "/quest-hard"
+                  ? "/quest"
+                  : "/quest"
               }
+              state={{ stateParam: difficulty }}
             >
               <button className="p-4 ml-14 text-lg text-center shadow-3xl w-28 rounded-md m-auto cursor-pointer">
                 Next
