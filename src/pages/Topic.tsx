@@ -90,9 +90,9 @@ export default function Topic() {
             />
             Sports
           </label>
-          <div className="mt-5">
+          <div className="mt-5 flex flex-wrap justify-center">
             <button
-              className="p-4 text-center text-lg shadow-3xl w-28 rounded-md  mr-10 cursor-pointer"
+              className="p-4 text-center text-lg shadow-3xl w-28 rounded-md  mr-5 cursor-pointer"
               onClick={navigateHome}
             >
               Previous
@@ -107,7 +107,7 @@ export default function Topic() {
               }
               state={{ stateParam: difficulty }}
             >
-              <button className="p-4 ml-14 text-lg text-center shadow-3xl w-28 rounded-md m-auto cursor-pointer">
+              <button className="p-4 text-lg text-center shadow-3xl w-28 rounded-md ml-5 cursor-pointer">
                 Next
               </button>
             </Link>
