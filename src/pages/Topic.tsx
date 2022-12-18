@@ -1,11 +1,16 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 //currently no topic is being saved
 import { useParams, useLocation, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-export default function Topic() {
+
+interface Props {
+  topics: string[];
+  setTopics: Dispatch<SetStateAction<string[]>>;
+}
+
+export default function Topic(props: Props) {
   const difficulty = useLocation().state.stateParam;
   const navigate = useNavigate();
-  const [topics, setTopics] = useState<string[]>([]);
   const navigateHome = () => {
     navigate("/");
   };
@@ -24,11 +29,11 @@ export default function Topic() {
               id="op1"
               className="m-5 ml-10"
               onChange={() => {
-                topics.includes("General Knowledge")
-                  ? setTopics(
-                      topics.filter((topic) => topic != "General Knowledge")
+                props.topics.includes("General Knowledge")
+                  ? props.setTopics(
+                      props.topics.filter((topic:string) => topic != "General Knowledge")
                     )
-                  : setTopics(topics.concat("General Knowledge"));
+                  : props.setTopics(props.topics.concat("General Knowledge"));
               }}
             />
             General Knowledge
@@ -41,9 +46,9 @@ export default function Topic() {
               className="m-5 ml-10"
               // onChange={check}
               onChange={() => {
-                topics.includes("History")
-                  ? setTopics(topics.filter((topic) => topic != "History"))
-                  : setTopics(topics.concat("History"));
+                props.topics.includes("History")
+                  ? props.setTopics(props.topics.filter((topic:string) => topic != "History"))
+                  : props.setTopics(props.topics.concat("History"));
               }}
             />
             History
@@ -55,9 +60,9 @@ export default function Topic() {
               id="op3"
               className="m-5 ml-10"
               onChange={() => {
-                topics.includes("Geography")
-                  ? setTopics(topics.filter((topic) => topic != "Geography"))
-                  : setTopics(topics.concat("Geography"));
+                props.topics.includes("Geography")
+                  ? props.setTopics(props.topics.filter((topic:string) => topic != "Geography"))
+                  : props.setTopics(props.topics.concat("Geography"));
               }}
             />
             Geography
@@ -69,9 +74,9 @@ export default function Topic() {
               id="op4"
               className="m-5 ml-10"
               onChange={() => {
-                topics.includes("Science")
-                  ? setTopics(topics.filter((topic) => topic != "Science"))
-                  : setTopics(topics.concat("Science"));
+                props.topics.includes("Science")
+                  ? props.setTopics(props.topics.filter((topic:string) => topic != "Science"))
+                  : props.setTopics(props.topics.concat("Science"));
               }}
             />
             Science
@@ -83,9 +88,9 @@ export default function Topic() {
               id="op5"
               className="m-5 ml-10"
               onChange={() => {
-                topics.includes("Sports")
-                  ? setTopics(topics.filter((topic) => topic != "Sports"))
-                  : setTopics(topics.concat("Sports"));
+                props.topics.includes("Sports")
+                  ? props.setTopics(props.topics.filter((topic: string) => topic != "Sports"))
+                  : props.setTopics(props.topics.concat("Sports"));
               }}
             />
             Sports
@@ -99,11 +104,7 @@ export default function Topic() {
             </button>
             <Link
               to={
-                difficulty === "easy"
-                  ? "/quest"
-                  : difficulty === "medium"
-                  ? "/quest"
-                  : "/quest"
+                 "/quest"
               }
               state={{ stateParam: difficulty }}
             >
@@ -114,6 +115,7 @@ export default function Topic() {
           </div>
         </div>
       </div>
+      {console.log(props.topics)};
     </>
   );
 }

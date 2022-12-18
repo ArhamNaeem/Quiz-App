@@ -1,7 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Axios from "axios";
-export default function Easy() {
+import { useLocation } from "react-router-dom";
+interface Props {
+  topics: string[];
+  setTopics: Dispatch<SetStateAction<string[]>>;
+}
+
+
+export default function Question(props: Props) {
+
   const { data, refetch, isLoading, error } = useQuery(["question"], async () => {
     return await Axios.get(
       "https://the-trivia-api.com/api/questions?categories=arts_and_literature&limit=1&difficulty=easy"
@@ -20,8 +28,8 @@ export default function Easy() {
   const [style, setStyle] = useState("h-10");
   const [qNumber, setQNumber] = useState(-1);
   const [result, setResult] = useState("");
-   const [score, setScore] = useState(0); 
-    
+  const [score, setScore] = useState(0); 
+  const location = useLocation();
   const getQuestion = () => {
     setQNumber(qNumber+1)
     setBtnState(!btnState);
@@ -33,7 +41,7 @@ export default function Easy() {
     const rand = Math.floor(Math.random() * 4)
     let opt = { op1: "", op2: "", op3: "", op4: "", };
     setCorrectAns(data && data[0].correctAnswer);
-    console.log(correctAns);
+    // console.log(correctAns);
     if (rand === 0) {
       opt = {
         op1: data && data[0].correctAnswer,
@@ -89,7 +97,7 @@ export default function Easy() {
           setTimeout(() => {
             setStyle("h-10");
             setResult("");
-          }, 1000);
+          }, 500);
     }
 }
 
@@ -102,7 +110,7 @@ export default function Easy() {
   return (
     <>
       <div className={style}>{result}</div>
-    
+      {/* <div>{props.topics}</div> */}
       <div className="flex flex-wrap justify-evenly h-40 mt-2 text-6xl relative left-10 ">
         <div>Question: {qNumber}</div>
         <div>Score: {score}</div>
