@@ -1,6 +1,19 @@
 import React, { useEffect, useState } from 'react'
 
-export default function Structure(props:any) {
+
+interface Props{
+    data: any;
+    refetch: any;
+    isLoading: boolean;
+    error: unknown;
+    qNumber: number;
+    setQNumber: React.Dispatch<React.SetStateAction<number>>;
+    score: number;
+    setScore: React.Dispatch<React.SetStateAction<number>>;
+}
+
+
+export default function Structure(props:Props) {
  interface Option {
    op1: string;
    op2: string;
@@ -13,7 +26,6 @@ export default function Structure(props:any) {
  const [btnState, setBtnState] = useState(true);
  const [style, setStyle] = useState("h-10");
  const [result, setResult] = useState("");
- const [score, setScore] = useState(0);
  const getQuestion = () => {
    props.setQNumber(props.qNumber + 1);
    setBtnState(!btnState);
@@ -60,7 +72,8 @@ export default function Structure(props:any) {
    }));
  };
 
- const checkForAnswer = (option: string | undefined) => {
+    const checkForAnswer = (option: string | undefined) => {
+        console.log('here',btnState);
    if (!btnState) {
      console.log("option already selected");
      return false;
@@ -75,7 +88,7 @@ export default function Structure(props:any) {
        setResult("");
      }, 1000);
      // setStyle("h-10 ")
-     setScore(score + 1);
+     props.setScore(props.score + 1);
    } else {
      setResult("Wrong Answer!");
      setTimeout(() => {
@@ -98,7 +111,7 @@ export default function Structure(props:any) {
       {/* <div>{props.topics}</div> */}
       <div className="flex flex-wrap justify-evenly h-40 mt-2 text-6xl relative left-10 ">
         <div>Question: {props.qNumber}</div>
-        <div>Score: {score}</div>
+        <div>Score: {props.score}</div>
       </div>
       <div className="text-center h-96 p-10">
         <p className="text-lg">{question}</p>
