@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 export default function Result(props: any) {
     const nav = useNavigate();
     const navigate = () => {
-        nav('/');
+      window.location.reload();
     }
   return (
     <>
@@ -23,7 +23,8 @@ export default function Result(props: any) {
         )}
         <button onClick={navigate} className="shadow-3xl p-5 text-xl w-36 m-28">
           Try again
-        </button>
+              </button>
+    <footer>Made by Arham Naeem</footer>
       </div>
     </>
   );

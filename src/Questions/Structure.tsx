@@ -73,7 +73,7 @@ export default function Structure(props:Props) {
  };
 
     const checkForAnswer = (option: string | undefined) => {
-        console.log('here',btnState);
+        console.log('here',btnState,option,correctAns);
    if (!btnState) {
      console.log("option already selected");
      return false;
