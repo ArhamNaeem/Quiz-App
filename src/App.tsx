@@ -8,9 +8,9 @@ import {
   QueryClient,
   useQuery,
 } from "@tanstack/react-query";
-import Easy from "./pages/Question";
+import Easy from "./Questions/Question";
 function App() {
-  const [topics, setTopics] = useState<string[]>([]);
+ 
 
   const client = new QueryClient();
   return (
@@ -21,7 +21,7 @@ function App() {
             {/* <FetchData /> */}
             <Route path="/" element={<Main />} />
             <Route path="/quest"
-              element={<Easy topics={topics} setTopics={setTopics}/>} />
+              element={<Easy/>} />
           </Routes>
         </Router>
       </QueryClientProvider>
