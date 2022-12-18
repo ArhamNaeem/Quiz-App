@@ -17,7 +17,9 @@ export default function Easy() {
   const [question, setQuestion] = useState<string | null>(null);
   const [options, setOptions] = useState<Option | null>(null);
   const [btnState, setBtnState] = useState(true);
-   const [qNumber, setQNumber] = useState(-1);
+  const [style, setStyle] = useState("h-10");
+  const [qNumber, setQNumber] = useState(-1);
+  const [result, setResult] = useState("");
    const [score, setScore] = useState(0); 
     
   const getQuestion = () => {
@@ -73,8 +75,21 @@ export default function Easy() {
     }
     setBtnState(!btnState)
     console.log(option, correctAns);
+        setStyle("h-10 shadow-3xl text-center text-md");
     if (option === correctAns) {
+      setResult("Correct Answer!");
+      setTimeout(() => {
+        setStyle("h-10")
+      setResult("");
+      },1000);
+      // setStyle("h-10 ")
       setScore(score + 1);
+    } else {
+          setResult("Wrong Answer!");
+          setTimeout(() => {
+            setStyle("h-10");
+            setResult("");
+          }, 1000);
     }
 }
 
@@ -86,6 +101,8 @@ export default function Easy() {
        if (error) return <h1 className="text-center text-3xl">Error</h1>;
   return (
     <>
+      <div className={style}>{result}</div>
+    
       <div className="flex flex-wrap justify-evenly h-40 mt-2 text-6xl relative left-10 ">
         <div>Question: {qNumber}</div>
         <div>Score: {score}</div>
