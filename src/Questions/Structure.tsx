@@ -73,13 +73,13 @@ export default function Structure(props:Props) {
  };
 
     const checkForAnswer = (option: string | undefined) => {
-        console.log('here',btnState,option,correctAns);
+        // console.log('here',btnState,option,correctAns);
    if (!btnState) {
-     console.log("option already selected");
+    //  console.log("option already selected");
      return false;
    }
    setBtnState(!btnState);
-   console.log(option, correctAns);
+  //  console.log(option, correctAns);
    setStyle("p-2 h-10 shadow-3xl text-center text-md");
    if (option === correctAns) {
      setResult("Correct Answer!");
