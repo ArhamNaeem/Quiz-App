@@ -8,10 +8,10 @@ export default function Main() {
           className="
           text-center text-7xl font-bold w-screen h-28 text-white drop-shadow-3xl mt-5"
         >
-          Quiz Game
+          Quiz App
         </div>
         <div className="text-9xl text-center w-screen font-semibold text-white drop-shadow-3xl">
-          Play now!
+          Start now!
         </div>
         <div className="text-white font-semibold my-24 text-3xl text-center p-3 w-screen h-50">
           <Link to="/quest">
